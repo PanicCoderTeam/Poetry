@@ -1,0 +1,22 @@
+CREATE TABLE `game_user` (
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `username` varchar(64) NOT NULL COMMENT '用户名',
+  `password_hash` char(64) NOT NULL COMMENT '加密密码(SHA256)',
+  `third_party_id` varchar(128) DEFAULT NULL COMMENT '第三方登录ID（微信/QQ）',
+  `game_rounds` int(10) unsigned DEFAULT '0' COMMENT '总参与局数',
+  `score` int(11) DEFAULT '0' COMMENT '当前积分',
+  `coins` int(10) unsigned DEFAULT '100' COMMENT '游戏币（购买道具用）',
+  `game_rank` enum('青铜','白银','黄金','铂金','钻石') DEFAULT '青铜' COMMENT '段位等级',
+  `current_room_id` varchar(36) DEFAULT NULL COMMENT '当前所在房间UUID',
+  `highest_streak` smallint(5) unsigned DEFAULT '0' COMMENT '最高连击次数',
+  `achievements` text COMMENT '成就徽章（如“百诗斩”“主题大师”）',
+  `friend_list` text COMMENT '好友ID列表',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
+  `last_login` datetime DEFAULT NULL COMMENT '最后登录时间',
+  `account_status` enum('正常','冻结','违规') DEFAULT '正常' COMMENT '账号状态',
+  `theme_stats` text COMMENT '主题战绩（如{"月":32,"花":45}）',
+  `items` text COMMENT '道具库存（如{"提示卡":3,"换字令":1}）',
+  `game_history` text COMMENT '最近10局对战记录',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `idx_username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='飞花令用户表' 

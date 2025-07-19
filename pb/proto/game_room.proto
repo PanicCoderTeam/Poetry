@@ -1,0 +1,105 @@
+syntax = "proto3";
+
+
+import "common.proto";
+import "trpc/proto/trpc_options.proto";
+
+
+package trpc.game;
+
+
+option go_package="pb/game_room";
+
+
+
+message CreateGameRoomRequest {
+    int32 maxPlayers = 1;
+    string password = 2;
+
+}
+
+message CreateGameRoomResp {
+    string roomId = 1;
+}
+
+message JoinGameRoomRequest {
+  string roomId = 1;
+  string password = 2;
+}
+
+message JoinGameRoomResp {
+  string roomId = 1;
+  repeated Player players = 2;
+}
+
+message Player {
+  string userId = 1;
+  string username = 2;
+  string state = 3;
+}
+message DescribeGameRoomRequest {
+  repeated trpc.peotry.common.Filter filter = 1;
+  int32 limit = 2;
+  int32 offset = 3;
+}
+
+message GameRoomInfo {
+  string roomId = 1;
+	string status = 2;
+	int32 maxPlayers = 3;
+	int32 currentPlayers = 4;
+  string gameMode = 5;
+  string slogan = 6;
+  string ownerId = 7;
+  repeated Player playerList = 8;
+}
+
+message DescribeGameRoomResp {
+  repeated GameRoomInfo gameRoomList = 1;
+  int32 totalCount = 2;
+}
+
+message LeaveGameRoomRequest {
+}
+
+message LeaveGameRoomResp {
+}
+
+message ReadyGameRequest {
+  string state = 1;
+}
+
+message ReadyGameResp {
+  Player player = 1;
+}
+
+message SubmitPoetryRequest {
+  string poetry = 1;
+}
+
+message NanoJoinGameRoomRequest {
+  string roomId = 1;
+  string password = 2;
+  string token = 3;
+}
+
+message NanoJoinGameRoomResp {
+  string state = 1;
+}
+
+service GameRoom {
+
+
+  rpc CreateGameRoom (CreateGameRoomRequest) returns (CreateGameRoomResp) {
+    option (trpc.alias) = "/poetry/CreateGameRoom";
+  }
+  rpc JoinGameRoom (JoinGameRoomRequest) returns (JoinGameRoomResp) {
+    option (trpc.alias) = "/poetry/JoinGameRoom";
+  }
+  rpc DescribeGameRoom(DescribeGameRoomRequest) returns (DescribeGameRoomResp) {
+    option (trpc.alias) = "/poetry/DescribeGameRoom";
+  }
+  rpc LeaveGameRoom(LeaveGameRoomRequest) returns (LeaveGameRoomResp) {
+    option (trpc.alias) = "/poetry/LeaveGameRoom";
+  }
+}

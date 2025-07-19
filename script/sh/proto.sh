@@ -1,0 +1,1 @@
+trpc create -p game_user.proto --rpconly --nogomod --mock=false

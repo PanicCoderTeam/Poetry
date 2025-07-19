@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+
+import "trpc/proto/trpc_options.proto";
+
+package common;
+
+option go_package="poetry/pb/common";
+
+
+
+message Filter {
+  string name = 1;
+  repeated string value = 2;
+}

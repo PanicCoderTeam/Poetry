@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "name": "Debug Nano App",
+      "type": "go",
+      "request": "launch",
+      "mode": "debug",
+      "program": "/root/code/poetry/src/cmd/main.go",
+      "env": {
+        "NANO_DEBUG": "1" // 启用Nano内部调试
+      },
+      "buildFlags": "-gcflags='all=-N -l'", // 禁用优化
+      "showLog": true,
+      "trace": "verbose",
+      "logOutput": "rpc"
+    },
+      {
+      "name": "Launch Package",   // 自定义调试名称
+      "type": "go",                // 调试语言类型
+      "request": "launch",         // 启动新进程
+      "mode": "auto",              // 自动识别程序/测试（可选 debug/test）
+      "program": "${workspaceFolder}", // 调试根目录（或指定文件如 main.go）
+      "env": {"GO111MODULE": "on"},// 环境变量
+      "args": ["-config=path"],    // 命令行参数
+      "console": "integratedTerminal" // 输出显示位置
+    }
+  ]
+}

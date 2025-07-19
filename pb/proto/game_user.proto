@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+import "trpc/proto/trpc_options.proto";
+
+package trpc.game_user;
+option go_package="pb/game_user";
+
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginResp {
+    string username = 1;
+    string token = 2;
+    string userId = 3;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message CreateUserResp {
+    string username = 1;
+}
+
+service User {
+  rpc Login (LoginRequest) returns (LoginResp) {
+    option (trpc.alias) = "/poetry/Login";
+  }
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResp) {
+    option (trpc.alias) = "/poetry/CreateUser";
+  }
+}

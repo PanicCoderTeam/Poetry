@@ -1,0 +1,2 @@
+nano:
+  serializer: json  # 必须与客户端协议一致

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "trpc/proto/trpc_options.proto";
+import "common.proto";
+
+package trpc.poetry;
+option go_package="pb/tag";
+
+service Tag {
+  rpc DescribeTagInfo (DescribeTagRequest) returns (DescribeTagInfoResponse) {
+    option (trpc.alias) = "/poetry/DescribeTagInfo";
+  }
+}
+
+message DescribeTagRequest {
+  repeated common.Filter filter = 1;
+  int32 offset = 2;
+  int32 limit = 6;
+}
+
+message TagInfo {
+    int64 id = 1;
+    string name = 2;
+    string category = 3;
+    int64 level = 4;
+}
+
+
+message DescribeTagInfoResponse {
+    int32 total = 1;
+    repeated TagInfo tagInfoList = 2;
+}

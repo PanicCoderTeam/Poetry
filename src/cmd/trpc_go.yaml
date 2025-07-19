@@ -1,0 +1,84 @@
+server:
+  service:
+    - name: trpc.poetry.trpc.Poetry
+      ip:  0.0.0.0
+      port: 8091
+      transport: go-net
+      protocol: trpc  # 服务使用的协议
+      
+    - name: trpc.poetry.http.Poetry
+      ip:  0.0.0.0
+      port: 8090
+      network: tcp
+      protocol: http  # 服务使用的协议
+      filter:
+        - capi
+        - cors_filter
+        - auth_filter
+plugins:
+  database:
+    mysql:
+      host: 127.0.0.1
+      port: 3306
+      username: root
+      password: pi=3.1415
+      dbname: poetry
+      max_open_conns: 50
+      max_idle_conns: 10
+      conn_max_lifetime: 300s
+      charset: utf8mb4      
+      parse_time: true
+      loc: Local
+    # redis:
+    #   addr: 127.0.0.1:6379
+    #   password: ""
+    #   db: 0
+
+  log:  # 所有日志配置
+    default:  # 默认日志配置，log.Debug("xxxo)
+     - writer: console  # 本地文件日志
+       caller_skip: 3
+       level: debug  # 本地文件滚动日志的级别
+       formatter: json  # 标准输出日志的格式
+       formatter_config:
+         time_fmt: 2006-01-02 15:04:05  # 日志时间格式。"2006-01-02 15:04:05"为常规时间格式，"seconds"为秒级时间戳，"milliseconds"为毫秒时间戳，"nanoseconds"为纳秒时间戳
+         time_key: Time  # 日志时间字段名称，不填默认"T"，填 "none" 可禁用此字段
+         level_key: Level  # 日志级别字段名称，不填默认"L"，填 "none" 可禁用此字段
+         name_key: Name  # 日志名称字段名称，不填默认"N"，填 "none" 可禁用此字段
+         caller_key: Caller  # 日志调用方字段名称，不填默认"C"，填 "none" 可禁用此字段
+         message_key: Message  # 日志消息体字段名称，不填默认"M"，填 "none" 可禁用此字段
+         stacktrace_key: StackTrace  # 日志堆栈字段名称，不填默认"S"，填 "none" 可禁用此字段 
+    #  - writer: file  # 本地文件日志
+    #    caller_skip: 3
+    #    level: debug  # 本地文件滚动日志的级别
+    #    formatter: json  # 标准输出日志的格式
+    #    formatter_config:
+    #     time_fmt: 2006-01-02 15:04:05  # 日志时间格式。"2006-01-02 15:04:05"为常规时间格式，"seconds"为秒级时间戳，"milliseconds"为毫秒时间戳，"nanoseconds"为纳秒时间戳
+    #     time_key: Time  # 日志时间字段名称，不填默认"T"，填 "none" 可禁用此字段
+    #     level_key: Level  # 日志级别字段名称，不填默认"L"，填 "none" 可禁用此字段
+    #     name_key: Name  # 日志名称字段名称，不填默认"N"，填 "none" 可禁用此字段
+    #     caller_key: Caller  # 日志调用方字段名称，不填默认"C"，填 "none" 可禁用此字段
+    #     message_key: Message  # 日志消息体字段名称，不填默认"M"，填 "none" 可禁用此字段
+    #     stacktrace_key: StackTrace  # 日志堆栈字段名称，不填默认"S"，填 "none" 可禁用此字段
+    #    writer_config:
+    #     log_path: /usr/log/
+    #     filename: smart_dispatch.log  # 本地文件滚动日志存放的路径
+    #     write_mode: 2  # 日志写入模式，1-同步，2-异步，3-极速 (异步丢弃), 不配置默认异步模式
+    #     roll_type: time  # 文件滚动类型，time 为按时间滚动
+    #     max_age: 7  # 最大日志保留天数
+    #     max_backups: 10  # 最大日志文件数
+    #     time_unit: day  # 滚动时间间隔，支持：minute/hour/day/month/year
+client:                                    # 客户端调用的后端配置
+  timeout: 1000                            # 针对所有后端的请求最长处理时间，单位 ms
+  namespace: Development                   # 针对所有后端的环境，正式环境 Production，测试环境 Development
+  filter:                                  # 针对所有后端的拦截器配置数组
+    - capi                             # 强烈建议使用这个debuglog打印日志，非常方便排查问题，具体可以参考：https://github.com/trpc-ecosystem/go-filter/tree/main/debuglog
+    - auth_filter
+  service:                                 # 针对单个后端的配置，默认都有默认值，可以完全不用配置
+    - callee: trpc.poetry.poetry.Poetry # 后端服务协议文件的 service name, 如果 callee 和下面的 name 一样，那只需要配置一个即可
+      name: trpc.poetry.poetry.Poetry  # 后端服务名字路由的 service name，有注册到北极星名字服务的话，下面 target 不用配置
+      target: ip://127.0.0.1:8081          # 后端服务地址，ip://ip:port polaris://servicename
+      protocol: trpc                       # 应用层协议 trpc http...，默认 trpc
+      timeout: 0                         # 当前这个请求最长处理时间，默认 0 不超时
+
+  
