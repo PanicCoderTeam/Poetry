@@ -1,5 +1,7 @@
 CREATE TABLE `game_user` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+    `user_id` varchar(64) NOT NULL COMMENT '用户名',
+
   `username` varchar(64) NOT NULL COMMENT '用户名',
   `password_hash` char(64) NOT NULL COMMENT '加密密码(SHA256)',
   `third_party_id` varchar(128) DEFAULT NULL COMMENT '第三方登录ID（微信/QQ）',
@@ -17,6 +19,6 @@ CREATE TABLE `game_user` (
   `theme_stats` text COMMENT '主题战绩（如{"月":32,"花":45}）',
   `items` text COMMENT '道具库存（如{"提示卡":3,"换字令":1}）',
   `game_history` text COMMENT '最近10局对战记录',
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `idx_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='飞花令用户表' 
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_username` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='飞花令用户表' ;

@@ -23,10 +23,10 @@ func (r *TagRepository) DescribeTag(ctx context.Context, name, category []string
 
 	db := r.db.Table((&entity.Tag{}).TableName())
 	if len(name) > 0 {
-		db.Where("title = ?", name)
+		db.Where("name = ?", name)
 	}
 	if len(category) > 0 {
-		db.Where("category = ?", category)
+		db.Where("parent_tag = ?", category)
 	}
 	if len(level) > 0 {
 		db.Where("level in (?)", level)

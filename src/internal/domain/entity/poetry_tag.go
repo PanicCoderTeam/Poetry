@@ -11,8 +11,7 @@ type PoetryTag struct {
 	ID       int64  `gorm:"column:id;type:bigint(20);primaryKey;autoIncrement:true;comment:ID" json:"id"` // ID
 	PoetryID int64  `gorm:"column:poetry_id;type:bigint(20);not null;comment:诗词ID" json:"poetryId"`       // 诗词ID
 	Tag      string `gorm:"column:tag;type:varchar(255);not null;comment:标签" json:"tag"`                  // 标签
-	TagID int64  `gorm:"column:tag_id;type:bigint(20);not null;comment:标签ID" json:"tagId"`			  // 标签ID
-	Category string `gorm:"column:category;type:varchar(255);not null;comment:标签分类" json:"category"`      // 标签分类
+	MinnTagID int64  `gorm:"column:min_tag_id;type:bigint(20);not null;comment:标签ID" json:"minTagId"`			  // 标签ID
 }
 
 // TableName PoetryTag's table name

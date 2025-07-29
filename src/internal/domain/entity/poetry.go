@@ -6,19 +6,39 @@ package entity
 
 const TableNamePoetry = "poetry"
 
+/*
+
+create table `poetry` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(255) DEFAULT "" NOT NULL COMMENT '标签名',
+  `title_tradition` varchar(255) DEFAULT "" NOT NULL COMMENT '标签名_繁体',
+  `paragraphs` text  NOT NULL COMMENT '古诗正文',
+  `paragraphs_tradition` text  NOT NULL COMMENT '古诗正文',
+  `author` varchar(255) DEFAULT "" NOT NULL COMMENT '作者',
+  `author_tradition` varchar(255) DEFAULT "" NOT NULL COMMENT '作者',
+  `dynasty` varchar(128) DEFAULT "" NOT NULL COMMENT '朝代',
+  `notes` text NOT NULL COMMENT '注释',
+  `comment` text  NOT NULL COMMENT '赏析',
+  `translation` text NOT NULL  COMENt '翻译',
+  `pinyin` text  NOT NULL COMMENT '拼音',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_tag_name` (`title`, `paragraphs`, `author`)
+)ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='诗词表';
+*/
 // Poetry mapped from table <poetry>
 type Poetry struct {
-	ID         int64  `gorm:"column:id;type:bigint(20);primaryKey;autoIncrement:true" json:"id"`
-	Title      string `gorm:"column:title;type:varchar(255)" json:"title"`
-	TitleTradition string `gorm:"column:title_tradition;type:varchar(255)" json:"titleTradition"`
-	Paragraphs string `gorm:"column:paragraphs;type:text;not null;comment:内容, 根据,分段" json:"paragraphs"`               // 内容, 根据,分段
-	ParagraphsTradition string `gorm:"column:paragraphs_tradition;type:text;not null;comment:内容, 根据,分段" json:"paragraphsTradition"`               // 内容, 根据,分段
-	Author     string `gorm:"column:author;type:varchar(128);not null;comment:作者" json:"author"`                      // 作者
-	AuthorTradition string `gorm:"column:author_tradition;type:varchar(128);not null;comment:作者" json:"authorTradition"`	                  // 作者
-	Rhythmic   string `gorm:"column:rhythmic;type:varchar(128);not null;comment:词牌名" json:"rhythmic"`                 // 词牌名
-	Notes      string `gorm:"column:notes;type:text;comment:备注" json:"notes"`                                         // 备注
-	PoetryType string `gorm:"column:poetry_type;type:varchar(128);not null;comment:诗词类型，唐诗、宋词、元曲等" json:"poetryType"` // 诗词类型，唐诗、宋词、元曲等
-	Dynasty    string `gorm:"column:dynasty;type:varchar(128);not null;comment:朝代" json:"dynasty"`                    // 朝代
+	ID                  int64  `gorm:"column:id;type:bigint(20);primaryKey;autoIncrement:true" json:"id"`
+	Title               string `gorm:"column:title;type:varchar(255)" json:"title"`
+	TitleTradition      string `gorm:"column:title_tradition;type:varchar(255)" json:"titleTradition"`
+	Paragraphs          string `gorm:"column:paragraphs;type:text;not null;comment:内容, 根据,分段" json:"paragraphs"`                    // 内容, 根据,分段
+	ParagraphsTradition string `gorm:"column:paragraphs_tradition;type:text;not null;comment:内容, 根据,分段" json:"paragraphsTradition"` // 内容, 根据,分段
+	Author              string `gorm:"column:author;type:varchar(128);not null;comment:作者" json:"author"`                           // 作者
+	AuthorTradition     string `gorm:"column:author_tradition;type:varchar(128);not null;comment:作者" json:"authorTradition"`        // 作者
+	Translation         string `gorm:"column:translation;type:text;not null;comment:词牌名" json:"rhythmic"`                           // 词牌名
+	Comment             string `gorm:"column:comment;type:text;comment:词牌名" json:"comment"`                                         // 词牌名
+	Notes               string `gorm:"column:notes;type:text;comment:备注" json:"notes"`                                              // 备注
+	PinYin              string `gorm:"column:pinyin;type:text;not null;comment:诗词类型，唐诗、宋词、元曲等" json:"poetryType"`                   // 诗词类型，唐诗、宋词、元曲等
+	Dynasty             string `gorm:"column:dynasty;type:varchar(128);not null;comment:朝代" json:"dynasty"`                         // 朝代
 }
 
 // TableName Poetry's table name

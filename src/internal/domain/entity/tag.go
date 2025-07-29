@@ -10,7 +10,7 @@ const TableNameTag = "tag"
 type Tag struct {
 	ID       int64  `gorm:"column:id;type:bigint(20);primaryKey;autoIncrement:true;comment:ID" json:"id"` // ID
 	Name     string `gorm:"column:name;type:varchar(255);not null;comment:标签名" json:"name"`               // 标签名
-	Category string `gorm:"column:category;type:varchar(255);not null;comment:标签分类" json:"category"`      // 标签分类
+	ParentTag string `gorm:"column:parent_tag;type:varchar(255);not null;comment:标签分类" json:"parentTag"`      // 标签分类
 	Level    int32  `gorm:"column:level;type:int(11);not null;comment:标签级别" json:"level"`                 // 标签级别
 }
 

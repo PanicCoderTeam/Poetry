@@ -45,12 +45,13 @@ def insert_mysql_author(json_data) :
     # # 4. 数据插入
     for item in json_data:
         insert_query = """
-        INSERT INTO author (name, `desc`)
-        VALUES (%s, %s)
+        INSERT INTO author (name, `desc`, dynasty)
+        VALUES (%s, %s, %s)
         """
         cursor.execute(insert_query, (
             item.get('name'),
             item.get('desc'),
+            item.get('dynasty'),
         ))
     conn.commit()
     conn.close()

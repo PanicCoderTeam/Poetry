@@ -24,7 +24,7 @@ func (r *PoetryRepository) DescribePeotryInfo(ctx context.Context, title, author
 
 	db := r.db.Table((&entity.Poetry{}).TableName())
 	if len(tagId) > 0 {
-		db.Joins("left join poetry_tag on poetry_tag.poetry_id = poetry.id").Where("poetry_tag.tag_id in (?)", tagId)
+		db.Joins("left join poetry_tag on poetry_tag.poetry_id = poetry.id").Where("poetry_tag.min_tag_id in (?)", tagId)
 	}
 	if len(title) > 0 {
 		conditions := []string{}
@@ -43,7 +43,7 @@ func (r *PoetryRepository) DescribePeotryInfo(ctx context.Context, title, author
 		db.Where("dynasty in (?) ", dynasty)
 	}
 	if len(poetry_type) > 0 {
-		db.Where("poetry_type in (?)", poetry_type)
+		db.Where("dynasty in (?)", poetry_type)
 	}
 	count := int64(0)
 	db.Count(&count)

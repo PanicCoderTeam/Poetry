@@ -1,0 +1,1 @@
+mysqldump -u root -ppi=3.1415 --databases poetry > dump.sql

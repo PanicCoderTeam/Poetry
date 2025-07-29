@@ -33,7 +33,7 @@ func (psi *TagServiceImpl) DescribeTagInfo(ctx context.Context, name, category [
 		tagList = append(tagList, &tag.TagInfo{
 			Id:       tagInfo.ID,
 			Name:     tagInfo.Name,
-			Category: tagInfo.Category,
+			Category: tagInfo.ParentTag,
 			Level:    int64(tagInfo.Level),
 		})
 	}

@@ -79,9 +79,9 @@ func (psi *PoetryServiceImpl) DescribePoetryInfo(ctx context.Context, title, aut
 			Author:     poetryInfo.Author,
 			Title:      poetryInfo.Title,
 			Paragraphs: poetryInfo.Paragraphs,
-			Rhythmic:   poetryInfo.Rhythmic,
+			Rhythmic:   poetryInfo.Notes,
 			Notes:      "",
-			PoetryType: poetryInfo.PoetryType,
+			PoetryType: poetryInfo.Dynasty,
 			Dynasty:    poetryInfo.Dynasty,
 		})
 	}
