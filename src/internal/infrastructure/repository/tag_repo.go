@@ -19,17 +19,17 @@ func NewTagRepository() *TagRepository {
 	return &TagRepository{db: infrastructure.DB}
 }
 
-func (r *TagRepository) DescribeTag(ctx context.Context, name, category []string, level []int64, limit, offset int) (int64, []*entity.Tag, error) {
+func (r *TagRepository) DescribeTag(ctx context.Context, name, category []string, parentTagId []int64, limit, offset int) (int64, []*entity.Tag, error) {
 
 	db := r.db.Table((&entity.Tag{}).TableName())
 	if len(name) > 0 {
 		db.Where("name = ?", name)
 	}
-	if len(category) > 0 {
-		db.Where("parent_tag = ?", category)
+	if len(category) == 1 && category[0] == "main" {
+		db.Where("level = 1")
 	}
-	if len(level) > 0 {
-		db.Where("level in (?)", level)
+	if len(parentTagId) > 0 {
+		db.Where("parent_tag_id in (?)", parentTagId)
 	}
 	count := int64(0)
 	db.Count(&count)

@@ -8,10 +8,12 @@ const TableNameTag = "tag"
 
 // Tag 标签表
 type Tag struct {
-	ID       int64  `gorm:"column:id;type:bigint(20);primaryKey;autoIncrement:true;comment:ID" json:"id"` // ID
-	Name     string `gorm:"column:name;type:varchar(255);not null;comment:标签名" json:"name"`               // 标签名
-	ParentTag string `gorm:"column:parent_tag;type:varchar(255);not null;comment:标签分类" json:"parentTag"`      // 标签分类
-	Level    int32  `gorm:"column:level;type:int(11);not null;comment:标签级别" json:"level"`                 // 标签级别
+	ID          int64  `gorm:"column:id;type:bigint(20);primaryKey;autoIncrement:true;comment:ID" json:"id"`   // ID
+	Name        string `gorm:"column:name;type:varchar(255);not null;comment:标签名" json:"name"`                 // 标签名
+	ParentTag   string `gorm:"column:parent_tag;type:varchar(255);not null;comment:标签分类" json:"parentTag"`     // 标签分类
+	ParentTagId int64  `gorm:"column:parent_tag_id;type:bigint(20);not null;comment:父标签id" json:"parentTagId"` // 标签分类
+	Level       int32  `gorm:"column:level;type:int(11);not null;comment:标签级别" json:"level"`                   // 标签级别
+	TagDesc     string `gorm:"column:tag_desc;type:text;comment:标签描述" json:"tagDesc"`
 }
 
 // TableName Tag's table name

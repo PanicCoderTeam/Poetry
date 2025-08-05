@@ -7,7 +7,7 @@
 package tag
 
 import (
-	"poetry/pb/common"
+	common "poetry/pb/common"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -26,9 +26,9 @@ const (
 
 type DescribeTagRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Filter        []*common.Filter       `protobuf:"bytes,1,rep,name=filter,proto3" json:"filter,omitempty"`
-	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty"`
-	Limit         int32                  `protobuf:"varint,6,opt,name=limit,proto3" json:"limit,omitempty"`
+	Filter        []*common.Filter       `protobuf:"bytes,1,rep,name=filter,proto3" json:"filter"`
+	Offset        int32                  `protobuf:"varint,2,opt,name=offset,proto3" json:"offset"`
+	Limit         int32                  `protobuf:"varint,6,opt,name=limit,proto3" json:"limit"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -86,10 +86,12 @@ func (x *DescribeTagRequest) GetLimit() int32 {
 
 type TagInfo struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Category      string                 `protobuf:"bytes,3,opt,name=category,proto3" json:"category,omitempty"`
-	Level         int64                  `protobuf:"varint,4,opt,name=level,proto3" json:"level,omitempty"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name"`
+	ParentTag     string                 `protobuf:"bytes,3,opt,name=parentTag,proto3" json:"parentTag"`
+	Level         int64                  `protobuf:"varint,4,opt,name=level,proto3" json:"level"`
+	TagDesc       string                 `protobuf:"bytes,5,opt,name=tagDesc,proto3" json:"tagDesc"`
+	ParentTagId   int64                  `protobuf:"varint,6,opt,name=parentTagId,proto3" json:"parentTagId"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -138,9 +140,9 @@ func (x *TagInfo) GetName() string {
 	return ""
 }
 
-func (x *TagInfo) GetCategory() string {
+func (x *TagInfo) GetParentTag() string {
 	if x != nil {
-		return x.Category
+		return x.ParentTag
 	}
 	return ""
 }
@@ -152,10 +154,24 @@ func (x *TagInfo) GetLevel() int64 {
 	return 0
 }
 
+func (x *TagInfo) GetTagDesc() string {
+	if x != nil {
+		return x.TagDesc
+	}
+	return ""
+}
+
+func (x *TagInfo) GetParentTagId() int64 {
+	if x != nil {
+		return x.ParentTagId
+	}
+	return 0
+}
+
 type DescribeTagInfoResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Total         int32                  `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"`
-	TagInfoList   []*TagInfo             `protobuf:"bytes,2,rep,name=tagInfoList,proto3" json:"tagInfoList,omitempty"`
+	Total         int32                  `protobuf:"varint,1,opt,name=total,proto3" json:"total"`
+	TagInfoList   []*TagInfo             `protobuf:"bytes,2,rep,name=tagInfoList,proto3" json:"tagInfoList"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,21 +224,23 @@ var File_tag_proto protoreflect.FileDescriptor
 
 const file_tag_proto_rawDesc = "" +
 	"\n" +
-	"\ttag.proto\x12\vtrpc.poetry\x1a\x1dtrpc/proto/trpc_options.proto\x1a\fcommon.proto\"j\n" +
+	"\ttag.proto\x12\btrpc.tag\x1a\x1dtrpc/proto/trpc_options.proto\x1a\fcommon.proto\"j\n" +
 	"\x12DescribeTagRequest\x12&\n" +
 	"\x06filter\x18\x01 \x03(\v2\x0e.common.FilterR\x06filter\x12\x16\n" +
 	"\x06offset\x18\x02 \x01(\x05R\x06offset\x12\x14\n" +
-	"\x05limit\x18\x06 \x01(\x05R\x05limit\"_\n" +
+	"\x05limit\x18\x06 \x01(\x05R\x05limit\"\x9d\x01\n" +
 	"\aTagInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1a\n" +
-	"\bcategory\x18\x03 \x01(\tR\bcategory\x12\x14\n" +
-	"\x05level\x18\x04 \x01(\x03R\x05level\"g\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1c\n" +
+	"\tparentTag\x18\x03 \x01(\tR\tparentTag\x12\x14\n" +
+	"\x05level\x18\x04 \x01(\x03R\x05level\x12\x18\n" +
+	"\atagDesc\x18\x05 \x01(\tR\atagDesc\x12 \n" +
+	"\vparentTagId\x18\x06 \x01(\x03R\vparentTagId\"d\n" +
 	"\x17DescribeTagInfoResponse\x12\x14\n" +
-	"\x05total\x18\x01 \x01(\x05R\x05total\x126\n" +
-	"\vtagInfoList\x18\x02 \x03(\v2\x14.trpc.poetry.TagInfoR\vtagInfoList2|\n" +
-	"\x03Tag\x12u\n" +
-	"\x0fDescribeTagInfo\x12\x1f.trpc.poetry.DescribeTagRequest\x1a$.trpc.poetry.DescribeTagInfoResponse\"\x1b\x8a\xb5\x18\x17/poetry/DescribeTagInfoB\bZ\x06pb/tagb\x06proto3"
+	"\x05total\x18\x01 \x01(\x05R\x05total\x123\n" +
+	"\vtagInfoList\x18\x02 \x03(\v2\x11.trpc.tag.TagInfoR\vtagInfoList2v\n" +
+	"\x03Tag\x12o\n" +
+	"\x0fDescribeTagInfo\x12\x1c.trpc.tag.DescribeTagRequest\x1a!.trpc.tag.DescribeTagInfoResponse\"\x1b\x8a\xb5\x18\x17/poetry/DescribeTagInfoB\bZ\x06pb/tagb\x06proto3"
 
 var (
 	file_tag_proto_rawDescOnce sync.Once
@@ -238,16 +256,16 @@ func file_tag_proto_rawDescGZIP() []byte {
 
 var file_tag_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_tag_proto_goTypes = []any{
-	(*DescribeTagRequest)(nil),      // 0: trpc.poetry.DescribeTagRequest
-	(*TagInfo)(nil),                 // 1: trpc.poetry.TagInfo
-	(*DescribeTagInfoResponse)(nil), // 2: trpc.poetry.DescribeTagInfoResponse
+	(*DescribeTagRequest)(nil),      // 0: trpc.tag.DescribeTagRequest
+	(*TagInfo)(nil),                 // 1: trpc.tag.TagInfo
+	(*DescribeTagInfoResponse)(nil), // 2: trpc.tag.DescribeTagInfoResponse
 	(*common.Filter)(nil),           // 3: common.Filter
 }
 var file_tag_proto_depIdxs = []int32{
-	3, // 0: trpc.poetry.DescribeTagRequest.filter:type_name -> common.Filter
-	1, // 1: trpc.poetry.DescribeTagInfoResponse.tagInfoList:type_name -> trpc.poetry.TagInfo
-	0, // 2: trpc.poetry.Tag.DescribeTagInfo:input_type -> trpc.poetry.DescribeTagRequest
-	2, // 3: trpc.poetry.Tag.DescribeTagInfo:output_type -> trpc.poetry.DescribeTagInfoResponse
+	3, // 0: trpc.tag.DescribeTagRequest.filter:type_name -> common.Filter
+	1, // 1: trpc.tag.DescribeTagInfoResponse.tagInfoList:type_name -> trpc.tag.TagInfo
+	0, // 2: trpc.tag.Tag.DescribeTagInfo:input_type -> trpc.tag.DescribeTagRequest
+	2, // 3: trpc.tag.Tag.DescribeTagInfo:output_type -> trpc.tag.DescribeTagInfoResponse
 	3, // [3:4] is the sub-list for method output_type
 	2, // [2:3] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name

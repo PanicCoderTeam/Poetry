@@ -49,7 +49,7 @@ func (poetryHandler *PoetryHandler) DescribePoetryInfo(ctx context.Context,
 		if filter.Name == "poetry-type" {
 			poetryTypeList = filter.Value
 		}
-		if filter.Name == "tag" {
+		if filter.Name == "tag-id" {
 			for _, value := range filter.Value {
 				v, err := strconv.Atoi(value)
 				if err != nil {

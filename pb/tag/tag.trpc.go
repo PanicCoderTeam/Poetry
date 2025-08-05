@@ -42,7 +42,7 @@ func TagService_DescribeTagInfo_Handler(svr interface{}, ctx context.Context, f 
 
 // TagServer_ServiceDesc descriptor for server.RegisterService.
 var TagServer_ServiceDesc = server.ServiceDesc{
-	ServiceName: "trpc.poetry.Tag",
+	ServiceName: "trpc.tag.Tag",
 	HandlerType: ((*TagService)(nil)),
 	Methods: []server.Method{
 		{
@@ -50,7 +50,7 @@ var TagServer_ServiceDesc = server.ServiceDesc{
 			Func: TagService_DescribeTagInfo_Handler,
 		},
 		{
-			Name: "/trpc.poetry.Tag/DescribeTagInfo",
+			Name: "/trpc.tag.Tag/DescribeTagInfo",
 			Func: TagService_DescribeTagInfo_Handler,
 		},
 	},

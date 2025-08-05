@@ -3,7 +3,7 @@ syntax = "proto3";
 import "trpc/proto/trpc_options.proto";
 import "common.proto";
 
-package trpc.poetry;
+package trpc.tag;
 option go_package="pb/tag";
 
 service Tag {
@@ -21,8 +21,10 @@ message DescribeTagRequest {
 message TagInfo {
     int64 id = 1;
     string name = 2;
-    string category = 3;
+    string parentTag = 3;
     int64 level = 4;
+    string tagDesc = 5;
+    int64 parentTagId = 6;
 }
 
 

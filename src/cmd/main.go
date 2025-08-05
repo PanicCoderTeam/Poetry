@@ -56,6 +56,7 @@ func main() {
 	game_user.RegisterUserService(s.Service("trpc.poetry.trpc.Poetry"), handler.NewGameUserHandler(guOption))
 	tag.RegisterTagService(s.Service("trpc.poetry.http.Poetry"), handler.NewTagHandler(tagOption))
 	tag.RegisterTagService(s.Service("trpc.poetry.trpc.Poetry"), handler.NewTagHandler(tagOption))
+
 	fmt.Printf("%+v\n", config.DBConfig)
 	// 启动服务
 	go func() {

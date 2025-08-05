@@ -1,0 +1,102 @@
+init plugin
+{"Level":"INFO","Time":"2025-08-04 17:01:16","Caller":"client/client_linux.go:17","Message":"client trpc.poetry.poetry.Poetry is empowered with tnet! 🤩 "}
+{"Level":"INFO","Time":"2025-08-04 17:01:16","Caller":"client/client_linux.go:17","Message":"client  is empowered with tnet! 🤩 "}
+{"Level":"DEBUG","Time":"2025-08-04 17:01:16","Caller":"maxprocs/maxprocs.go:120","Message":"maxprocs: Leaving GOMAXPROCS=2: CPU quota undefined"}
+db Cofnig{Driver: Host:127.0.0.1 Port:3306 Username:root Password:pi=3.1415 DBName:poetry MaxConns:50 MaxIdle:10 Charset:utf8mb4 ParseTime:true Loc:Local}
+dsn:root:pi=3.1415@tcp(127.0.0.1:3306)/poetry?charset=utf8mb4&parseTime=true&loc=Local
+{Driver: Host:127.0.0.1 Port:3306 Username:root Password:pi=3.1415 DBName:poetry MaxConns:50 MaxIdle:10 Charset:utf8mb4 ParseTime:true Loc:Local}
+{"level":"debug","ts":"2025-08-04T17:01:16.456336594+08:00","caller":"game/game.go:100","func":"poetry/src/internal/game.(*GameHandler).Init","msg":"初始化游戏处理器"}
+{"level":"debug","ts":"2025-08-04T17:01:16.456382451+08:00","caller":"game/game.go:104","func":"poetry/src/internal/game.(*GameHandler).AfterInit","msg":"AfterInit add scheduler"}
+{"Level":"INFO","Time":"2025-08-04 17:01:16","Caller":"server/serve_unix.go:54","Message":"process:924162, trpc service:trpc.poetry.trpc.Poetry launch success, tcp:0.0.0.0:8091, serving ..."}
+{"Level":"INFO","Time":"2025-08-04 17:01:16","Caller":"server/serve_unix.go:54","Message":"process:924162, http service:trpc.poetry.http.Poetry launch success, tcp:0.0.0.0:8090, serving ..."}
+{"Level":"DEBUG","Time":"2025-08-04 17:02:42","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+
+2025/08/04 17:02:42 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.595ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test') AND password_hash in ('f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c')
+
+2025/08/04 17:02:42 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.730ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test') AND password_hash in ('f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c')
+{"Level":"DEBUG","Time":"2025-08-04 17:02:42","Caller":"capi/capi.go:73","Message":"{\"cost\":1572,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test\",\"password\":\"f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c\"},\"resp\":null}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:02:42","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:02:48","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+
+2025/08/04 17:02:48 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.504ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test') AND password_hash in ('f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c')
+
+2025/08/04 17:02:48 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.372ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test') AND password_hash in ('f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c')
+{"Level":"DEBUG","Time":"2025-08-04 17:02:48","Caller":"capi/capi.go:73","Message":"{\"cost\":1083,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test\",\"password\":\"f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c\"},\"resp\":null}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:02:48","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:07","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:07","Caller":"capi/capi.go:73","Message":"{\"cost\":133,\"error\":null,\"req\":{},\"resp\":null}","RequestId":"","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:07","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"38bcc1ac-678e-4d8b-ab34-bb1cc35bd9c0","server_ip":"0.0.0.0"}
+
+2025/08/04 17:03:07 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.521ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+
+2025/08/04 17:03:07 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.362ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+{"Level":"DEBUG","Time":"2025-08-04 17:03:07","Caller":"capi/capi.go:73","Message":"{\"cost\":1058,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test1\",\"password\":\"d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b\"},\"resp\":null}","RequestId":"38bcc1ac-678e-4d8b-ab34-bb1cc35bd9c0","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:07","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"38bcc1ac-678e-4d8b-ab34-bb1cc35bd9c0","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:17","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:17","Caller":"capi/capi.go:73","Message":"{\"cost\":95,\"error\":null,\"req\":{},\"resp\":null}","RequestId":"","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:17","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"1ba7ce35-5d14-46c8-895c-04af69d7369b","server_ip":"0.0.0.0"}
+
+2025/08/04 17:03:17 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.487ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+
+2025/08/04 17:03:17 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.387ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+{"Level":"DEBUG","Time":"2025-08-04 17:03:17","Caller":"capi/capi.go:73","Message":"{\"cost\":1060,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test1\",\"password\":\"d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b\"},\"resp\":null}","RequestId":"1ba7ce35-5d14-46c8-895c-04af69d7369b","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:03:17","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"1ba7ce35-5d14-46c8-895c-04af69d7369b","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:04:05","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:04:05","Caller":"capi/capi.go:73","Message":"{\"cost\":122,\"error\":null,\"req\":{},\"resp\":null}","RequestId":"","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:04:05","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"a565d542-c95b-40a6-a00a-20d0e5c0df91","server_ip":"0.0.0.0"}
+
+2025/08/04 17:04:05 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.528ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+
+2025/08/04 17:04:05 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.398ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+{"Level":"DEBUG","Time":"2025-08-04 17:04:05","Caller":"capi/capi.go:73","Message":"{\"cost\":1136,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test1\",\"password\":\"d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b\"},\"resp\":null}","RequestId":"a565d542-c95b-40a6-a00a-20d0e5c0df91","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:04:05","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"a565d542-c95b-40a6-a00a-20d0e5c0df91","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:10:12","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+
+2025/08/04 17:10:12 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.559ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test123') AND password_hash in ('f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c')
+
+2025/08/04 17:10:12 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.354ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test123') AND password_hash in ('f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c')
+{"Level":"DEBUG","Time":"2025-08-04 17:10:12","Caller":"capi/capi.go:73","Message":"{\"cost\":1099,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test123\",\"password\":\"f174120abe0d35e25588cff5ec53f080698718e06ecfeae6a024a72ed639e39c\"},\"resp\":null}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:10:12","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:10:21","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+
+2025/08/04 17:10:21 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.567ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+
+2025/08/04 17:10:21 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.416ms] [34;1m[rows:0][0m SELECT * FROM `game_user` WHERE username in ('test1') AND password_hash in ('d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b')
+{"Level":"DEBUG","Time":"2025-08-04 17:10:21","Caller":"capi/capi.go:73","Message":"{\"cost\":1220,\"error\":{\"ErrorCode\":\"ResourceNotFoundError\",\"Message\":\"用户不存在\"},\"req\":{\"username\":\"test1\",\"password\":\"d1a7952ab858762543c38c19ccbec71bb8c9cc836f25666c0817d243e06e9d7b\"},\"resp\":null}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:10:21","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): 用户不存在","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:10:48","Caller":"filter/cors_filter.go:24","Message":"{\"cors middleware\":\"add cors header\"}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+
+2025/08/04 17:10:48 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:34
+[0m[33m[0.545ms] [34;1m[rows:1][0m SELECT count(*) FROM `game_user` WHERE username in ('user1') AND password_hash in ('0331a82314849c9d53abb59e9e6ad2b22278328ed58c61c41de1a78a86b70156')
+
+2025/08/04 17:10:48 [32m/root/code/poetry/src/internal/infrastructure/repository/game_user_repo.go:42
+[0m[33m[0.441ms] [34;1m[rows:1][0m SELECT * FROM `game_user` WHERE username in ('user1') AND password_hash in ('0331a82314849c9d53abb59e9e6ad2b22278328ed58c61c41de1a78a86b70156')
+{"Level":"DEBUG","Time":"2025-08-04 17:10:48","Caller":"service_impl/game_user_service_impl.go:59","Message":"{\"userWithToken\":[{\"id\":4,\"username\":\"user1\",\"passwordHash\":\"0331a82314849c9d53abb59e9e6ad2b22278328ed58c61c41de1a78a86b70156\",\"thirdPartyId\":\"\",\"gameRounds\":0,\"score\":0,\"coins\":100,\"gameRank\":\"青铜\",\"currentRoomId\":\"\",\"highestStreak\":0,\"achievements\":\"[]\",\"friendList\":\"[]\",\"createdAt\":\"2025-07-28T09:08:19+08:00\",\"lastLogin\":\"1969-07-21T04:17:40+08:00\",\"accountStatus\":\"正常\",\"themeStats\":\"[]\",\"items\":\"[]\",\"gameHistory\":\"[]\",\"userId\":\"user-c531f509-577\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlci1jNTMxZjUwOS01NzciLCJ1c2VyX25hbWUiOiJ1c2VyMSIsImlzcyI6InBvZXRyeSIsImV4cCI6MTc1NDM4NTA0OCwibmJmIjoxNzU0Mjk4NjQ4LCJpYXQiOjE3NTQyOTg2NDh9.8scaI8DrhEJ7YHTv3Z-7E0UgvUn3HCmjmOk9wUWUZzo\"}]}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:10:48","Caller":"capi/capi.go:73","Message":"{\"cost\":1410,\"error\":null,\"req\":{\"username\":\"user1\",\"password\":\"0331a82314849c9d53abb59e9e6ad2b22278328ed58c61c41de1a78a86b70156\"},\"resp\":{\"username\":\"user1\",\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXNlci1jNTMxZjUwOS01NzciLCJ1c2VyX25hbWUiOiJ1c2VyMSIsImlzcyI6InBvZXRyeSIsImV4cCI6MTc1NDM4NTA0OCwibmJmIjoxNzU0Mjk4NjQ4LCJpYXQiOjE3NTQyOTg2NDh9.8scaI8DrhEJ7YHTv3Z-7E0UgvUn3HCmjmOk9wUWUZzo\",\"userId\":\"user-c531f509-577\"}}","RequestId":"adfasdfasdfasdfasdf","server_ip":"0.0.0.0"}
+{"Level":"DEBUG","Time":"2025-08-04 17:16:34","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 17:57:11","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 18:10:11","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name /favicon.ico invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 18:46:37","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 18:53:59","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 18:55:12","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name /favicon.ico invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:02:41","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:02:57","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name /favicon.ico invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:02:59","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:03:01","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name  invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:27:44","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:29:56","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}
+{"Level":"DEBUG","Time":"2025-08-04 20:41:04","Caller":"server/service.go:218","Message":"service: trpc.poetry.http.Poetry handle err (if caused by health checking, this error can be ignored): type:framework, code:12, msg:service handle: rpc name / invalid, current service:trpc.poetry.http.Poetry"}

@@ -23,18 +23,20 @@ func NewTagServiceImpl(option TagServiceImplOption) *TagServiceImpl {
 	}
 }
 
-func (psi *TagServiceImpl) DescribeTagInfo(ctx context.Context, name, category []string, level []int64, limit, offset int) (int64, []*tag.TagInfo, error) {
-	count, tagDaoList, err := psi.tagRepo.DescribeTag(ctx, name, category, level, limit, offset)
+func (psi *TagServiceImpl) DescribeTagInfo(ctx context.Context, name, category []string, parentTagId []int64, limit, offset int) (int64, []*tag.TagInfo, error) {
+	count, tagDaoList, err := psi.tagRepo.DescribeTag(ctx, name, category, parentTagId, limit, offset)
 	tagList := []*tag.TagInfo{}
 	if err != nil {
 		return count, tagList, err
 	}
 	for _, tagInfo := range tagDaoList {
 		tagList = append(tagList, &tag.TagInfo{
-			Id:       tagInfo.ID,
-			Name:     tagInfo.Name,
-			Category: tagInfo.ParentTag,
-			Level:    int64(tagInfo.Level),
+			Id:          tagInfo.ID,
+			Name:        tagInfo.Name,
+			ParentTag:   tagInfo.ParentTag,
+			Level:       int64(tagInfo.Level),
+			TagDesc:     tagInfo.TagDesc,
+			ParentTagId: tagInfo.ParentTagId,
 		})
 	}
 	return count, tagList, nil
